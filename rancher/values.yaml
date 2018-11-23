@@ -1,8 +1,3 @@
-# Additional Trusted CAs.
-# Enable this flag and add your CA certs as a secret named tls-ca-additional in the namespace.
-# See README.md for details.
-additionalTrustedCAs: false
-
 antiAffinity: preferred
 
 # Audit Logs https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing/
@@ -36,24 +31,11 @@ imagePullSecrets: []
 ### ingress ###
 # Readme for details and instruction on adding tls secrets.
 ingress:
-  extraAnnotations: {}
-  tls:
-    # rancher, letsEncrypt, secrets
-    source: rancher
+  scheme: internal
+  subnets: ""
+  security_group: ""
+  certificate_arn: ""
 
-### LetsEncrypt config ###
-# ProTip: The production environment only allows you to register a name 5 times a week.
-#         Use staging until you have your config right.
-letsEncrypt:
-  # email: none@example.com
-  environment: production
-
-# If you are using certs signed by a private CA set to 'true' and set the 'tls-ca'
-# in the 'rancher-system' namespace. See the README.md for details
-privateCA: false
-
-# http[s] proxy server passed into rancher server.
-# proxy: http://<username>@<password>:<url>:<port>
 
 # comma separated list of domains or ip addresses that will not use the proxy 
 noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 
@@ -70,9 +52,8 @@ replicas: 3
 # Set pod resource requests/limits for Rancher.
 resources: {}
 
-# 
-# tls
-#   Where to offload the TLS/SSL encryption
-# - ingress (default)
-# - external
-tls: ingress
+albIngressController:
+  region: "us-east-1"
+  clusterName: "cluster"
+  imageUrl: quay.io/coreos/alb-ingress-controller:1.0.0
+ 
