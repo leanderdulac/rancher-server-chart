@@ -66,7 +66,7 @@ spec:
           # Enables logging on all outbound requests sent to the AWS API.
           # If logging is desired, set to true.
         - name: AWS_DEBUG
-          value: "false"
+          value: "true"
           # Maximum number of times to retry the aws calls.
           # defaults to 20.
         - name: AWS_MAX_RETRIES

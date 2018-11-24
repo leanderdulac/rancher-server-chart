@@ -21,7 +21,7 @@ addLocal: "auto"
 debug: false
 
 # Fully qualified name to reach your Rancher server
-# hostname: rancher.my.org
+hostname: rancher.my.org
 
 ## Optional array of imagePullSecrets containing private registry credentials
 ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -33,8 +33,8 @@ imagePullSecrets: []
 ingress:
   scheme: internal
   subnets: ""
-  security_group: ""
-  certificate_arn: ""
+  securityGroup: ""
+  certificateArn: ""
 
 
 # comma separated list of domains or ip addresses that will not use the proxy 
@@ -44,7 +44,7 @@ noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 rancherImage: rancher/rancher
 # rancher/rancher image tag. https://hub.docker.com/r/rancher/rancher/tags/
 # Defaults to .Chart.appVersion
-# rancherImageTag: v2.0.7
+rancherImageTag: v2.1.1
 
 # Number of Rancher server replicas.
 replicas: 3
@@ -55,5 +55,5 @@ resources: {}
 albIngressController:
   region: "us-east-1"
   clusterName: "cluster"
-  imageUrl: quay.io/coreos/alb-ingress-controller:1.0.0
+  imageUrl: quay.io/coreos/alb-ingress-controller:v1.0.0
  
