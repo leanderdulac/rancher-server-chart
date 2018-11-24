@@ -17,6 +17,7 @@ items:
       alb.ingress.kubernetes.io/unhealthy-threshold-count: '3'
       alb.ingress.kubernetes.io/success-codes: '200-399'
       external-dns.alpha.kubernetes.io/hostname: {{ .Values.hostname }}
+      kubernetes.io/ingress.class: alb
     generation: 1
     labels:
       app: {{ template "rancher.fullname" . }}
