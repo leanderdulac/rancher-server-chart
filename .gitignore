@@ -1,3 +1,4 @@
+requirements.lock
 /charts/*
 .vscode
 .dapper

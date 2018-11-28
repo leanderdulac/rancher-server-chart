@@ -51,9 +51,3 @@ replicas: 3
 
 # Set pod resource requests/limits for Rancher.
 resources: {}
-
-albIngressController:
-  region: "us-east-1"
-  clusterName: "cluster"
-  imageUrl: quay.io/coreos/alb-ingress-controller:v1.0.0
- 
