@@ -4,6 +4,9 @@ items:
   kind: Ingress
   metadata:
     annotations:
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
       alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.scheme }}
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS": 443}]'
       alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
