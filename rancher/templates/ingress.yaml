@@ -6,21 +6,9 @@ items:
     annotations:
       nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
-      nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
-      alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.scheme }}
-      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS": 443}]'
-      alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
-      alb.ingress.kubernetes.io/security-groups: {{ .Values.ingress.securityGroup }}
-      alb.ingress.kubernetes.io/certificate-arn: {{ .Values.ingress.certificateArn }}
-      alb.ingress.kubernetes.io/healthcheck-interval-seconds: '10'
-      alb.ingress.kubernetes.io/healthcheck-path: '/healthz'
-      alb.ingress.kubernetes.io/healthcheck-protocol: 'HTTP'
-      alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '6'
-      alb.ingress.kubernetes.io/healthy-threshold-count: '3'
-      alb.ingress.kubernetes.io/unhealthy-threshold-count: '3'
-      alb.ingress.kubernetes.io/success-codes: '200-399'
-      external-dns.alpha.kubernetes.io/hostname: {{ .Values.hostname }}
-      kubernetes.io/ingress.class: alb
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false" # turn off ssl redirect for external.
+    kubernetes.io/ingress.class: "nginx"
     generation: 1
     labels:
       app: {{ template "rancher.fullname" . }}
